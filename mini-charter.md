@@ -1,6 +1,6 @@
 (Mini charter proposal for T2TRG/Transports to be discussed)
 
-CoAP today works over UDP, DTLS, TCP, TLS and Websockets. CoAP messages can be conveyed over other alternative transports, both IP-based (such as QUIC) and non-IP (such as SMS). The group will attempt to reach the following goals:
+CoAP today works over UDP, DTLS, TCP, TLS and Websockets. In future, CoAP messages can be conveyed over other alternative transports, both IP-based (such as QUIC) and non-IP (such as SMS). The group will attempt to reach the following goals:
 
 1. The group will define transport mappings for the usage of CoAP over SMS. Compatibility with CoAP over SMS as defined in OMA LWM2M will be considered. As a starting point, draft-becker-core-coap-sms-gprs-06 can be used. The work for this charter item would be undertaken in the CoRE Working Group.
 
