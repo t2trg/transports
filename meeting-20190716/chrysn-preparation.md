@@ -23,3 +23,5 @@
     * We already expose what they call the ALPN name (first member of the tuple, the more specific protocol with potentially options) as independent URIs
     * We don't do everything over TLS ("h2c" aka "HTTP/2 over TCP only" registered, but can't really be used)
     * Alternative services are optional -- in CoRE we can probably not provide that, given there are already pairs of endpoints that can't talk to each other
+    * We'll advertise a lot from third parties (RDs, possibly even arbitrary links)
+    * We'll want to pack it into links
