@@ -17,6 +17,7 @@
   * Attack scenario: user controlling /~user/ can redirect to :8080
   * Requires certificate pinning, if done, extends to alternative services
   * Recommend explicitly carrying the protocol to avoid servers getting confused on what the expected security properties are
+    * That'd be similar to us sending a Proxy-Scheme option along
 
   * What's different in CoRE?
     * Not everybody is using domain-based trust models (LwM2M just uses task-based trust model), but that just makes those people largely unaffected by all this.
