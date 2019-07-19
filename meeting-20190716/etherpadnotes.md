@@ -58,5 +58,5 @@ Actions to work on:
 * 4- Find out how ICE fits in with transports-- https://github.com/t2trg/transports/issues/1
 * 5- Contacting Michael Koster about OCF URIs
 
-[1]: Alt-Svc: https://tools.ietf.org/html/rfc7838#section-3
+[1]: https://tools.ietf.org/html/rfc7838#section-3
 [2]: https://github.com/t2trg/transports/blob/master/meeting-20190716/chrysn-preparation.md
