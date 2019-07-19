@@ -75,13 +75,47 @@ It uses the same URI structure as the other CoAP schemes,
 but gives particular meaning to the authority component.
 This scheme does not use port assignments.
 
-The host component of the URI indicates a DNS name under which services are announced using DNS-SD,
-following the mapping being established in [RD-DNS-SD] using a particular to-be-defined service name.
+The host component of the URI indicates a DNS name under which services are announced using DNS-SD like (for `coap+sd://host.example.com`)
+```
+_coap+sd._udp.host.example.com IN PTR wifitcp._coap+sd._udp.host.example.com
+wifitcp._coap+sd._udp.host.example.com IN SRV 0 0 5683 wifi.host.example.com
+wifitcp._coap+sd._udp.host.example.com IN TXT txtver=1;path=;scheme=coap+tcp
+```
+which, following the mapping of [RD-DNS-SD],
+can be produced by registering a link like
+`<coaps+tcp://wifi.host.example.com>;rel=proxy-transport; ins=wifitcp;st=coap+sd`
+on a resource directory
+(where first half of the statement is what the device would announce per the first section anyway).
 
 Dereferencing a `coap+sd` URI can not be dereferenced directly,
-but only usign a proxy --
-typically indicated in using a `transport-proxy` rel.
+but only usign a proxy.
+In particular, using the one at the proxy-transport address, which is typically the same device.
 
-A client that obtains a DNS-SD record with that service name for a host name A
-interprets it not only by the target attributes indicated by the RD-DNS mapping,
+A client that obtains a coap+sd PTR/SRV/TXT for a host name `A`
+can infer from those not only the target attributes indicated by the RD-DNS mapping,
 but additionaly treats it as a link from `coap+sd://A` to the indicated link target.
+The client should use the priority and weight information encoded in the SRV records if there is more than one,
+even though that information is not available in the link interpretation of the records.
+
+[ This is currently described in terms of DNS-SD.
+Were there a way to indicate a scheme in a SRV record,
+a `host.example.com IN SRV` could be used just as well.
+A [URI record] may be used as well --
+that is best figured out with people more familiar with DNS. ]
+
+[RD-DNS-SD]: https://tools.ietf.org/html/draft-ietf-core-rd-dns-sd-05
+[URI record]: https://tools.ietf.org/html/rfc7553
+
+`coap+hash`
+-----------
+
+The [rdlink] draft describes a `coap+hash` scheme,
+URIs of which can not be dereferened in general either.
+In the structure of its host component,
+that scheme indicates how a host can provde possession of that name.
+
+With that scheme, links of rel `transport-proxy` are discovered
+either by using a global resource directory
+or by multicast querying for `/.well-known/core?anchor=coap+scheme://...`.
+
+[rdlink]: https://tools.ietf.org/html/draft-amsuess-t2trg-rdlink-00
