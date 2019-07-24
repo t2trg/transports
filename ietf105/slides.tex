@@ -1,0 +1,47 @@
+\documentclass[aspectratio=169]{beamer}
+
+% generic packages
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+
+% about the presentation
+\title{Transports for CoAP}
+\subtitle{new URI schemes of CoAP. protocol negotiation}
+\author{Bill~Silverajan, Klaus~Hartke, Ines~Robles, \em Christian~Amsüss}
+\date{2019-07-24}
+
+% used commands
+
+\usepackage{verbatim}
+
+% attach self
+
+\usepackage{embedfile}
+\embedfile{\jobname.tex}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{``Mini-charter''}\begin{center}
+	\Large
+	\begin{itemize}
+		\item[G1] Define CoAP over SMS (work in CoRE)
+			\begin{itemize} \Large
+				\item<2-> So we're ready for other non-IP ones (NB-IoT, slipmux, \ldots)
+				\item<2-> Starting from old \href{https://tools.ietf.org/html/draft-becker-core-coap-sms-gprs-06}{\texttt{coap-over-sms}} and LwM2M input
+			\end{itemize}
+		\item[G2] Single scheme for all transports (avoiding URI aliasing)
+			\begin{itemize} \Large
+				\item<3-> input from HTTP's \href{https://tools.ietf.org/html/rfc7838}{\texttt{Alt-Svc}}
+			\end{itemize}
+		\item[G3] Announcing the active transports (allow transport switchovers)
+			\begin{itemize} \Large
+				\item<4-> Starting from \href{https://tools.ietf.org/html/draft-silverajan-core-coap-protocol-negotiation-09}{\texttt{protocol-negotiation}}
+			\end{itemize}
+	\end{itemize}
+\end{center}\end{frame}
+
+\end{document}
